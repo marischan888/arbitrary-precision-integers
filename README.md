@@ -15,7 +15,7 @@ The `bitint` supports the following features:
 - Insertion (<<, to print the integer to a stream such as std::cout or a file)
 - Increment (++, both pre-increment and post-increment)
 - Decrement (--, both pre-decrement and post-decrement)
----
+
 ## Method Documentation
 
 ### Public Methods
@@ -77,12 +77,10 @@ The `bitint` supports the following features:
     - **Post-increment (`obj++`)**: Returns the object before incrementing its value.
     - **Pre-decrement (`--obj`)**: Decrements the value before returning the object.
     - **Post-decrement (`obj--`)**: Returns the object before decrementing its value.
-
----
+   
 ## Test
 Unit tests are in `test.cpp`.
 
----
 ## Usage under Mac
 Build the `test.cpp` with clang++ (or with g++)
 ```shell
