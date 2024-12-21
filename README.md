@@ -1,6 +1,6 @@
 # arbitrary-precision-integers
-`bigint.hpp`, an implementation of arbitrary-precision integers. This
-class provides functionality for performing mathematical operations (addition, subtraction, multiplication, etc.) on
+
+`bigint.hpp`, an implementation of arbitrary-precision integers. This class provides functionality for performing mathematical operations (addition, subtraction, multiplication, etc.) on
 integers of any size, far beyond the limits of built-in C++ types.
 
 ## Overview

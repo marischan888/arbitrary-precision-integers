@@ -321,7 +321,7 @@ public:
      */
     friend std::ostream& operator<<(std::ostream& os, const bigint& num) {
         if (num.is_negative) os << '-';
-        for (int64_t digit : std::ranges::reverse_view(num.digits)) {
+        for (const int64_t digit : std::ranges::reverse_view(num.digits)) {
             os << digit;
         }
         return os;
