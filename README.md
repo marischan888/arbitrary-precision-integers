@@ -1,7 +1,7 @@
 # arbitrary-precision-integers
 
 `bigint.hpp`, an implementation of arbitrary-precision integers. This class provides functionality for performing mathematical operations (addition, subtraction, multiplication, etc.) on
-integers of any size, far beyond the limits of built-in C++ types.
+integers of any size, beyond the limits of built-in C++ types.
 
 ## Overview
 The `bitint` supports the following features:
