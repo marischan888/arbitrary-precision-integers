@@ -74,8 +74,7 @@ The `bitint` supports the following features:
    - Post-increment (`obj++`): Returns the object before incrementing its value.
    - Pre-decrement (`--obj`): Decrements the value before returning the object.
    - Post-decrement (`obj--`): Returns the object before decrementing its value.
-  
- 
+   
    ```cpp
    bigint& operator++();       // Pre-increment
    bigint operator++(int);     // Post-increment
