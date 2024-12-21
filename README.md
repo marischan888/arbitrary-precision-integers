@@ -70,10 +70,10 @@ The `bitint` supports the following features:
 5. **Increment and Decrement Operators**
 
    Overloaded increment and decrement operators to modify the value of a `bigint` object by 1.
-   - **Pre-increment (`++obj`)**: Increments the value before returning the object.
-   - **Post-increment (`obj++`)**: Returns the object before incrementing its value.
-   - **Pre-decrement (`--obj`)**: Decrements the value before returning the object.
-   - **Post-decrement (`obj--`)**: Returns the object before decrementing its value.
+   - Pre-increment (`++obj`): Increments the value before returning the object.
+   - Post-increment (`obj++`): Returns the object before incrementing its value.
+   - Pre-decrement (`--obj`): Decrements the value before returning the object.
+   - Post-decrement (`obj--`): Returns the object before decrementing its value.
    
    ```cpp
    bigint& operator++();       // Pre-increment
