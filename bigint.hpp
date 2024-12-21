@@ -307,16 +307,17 @@ public:
     }
 
     /**
-     * @brief Overloaded operator for performing a custom operation
-     *        specific to the class or type where it is defined.
+     * @brief Overloads the comparison or arithmetic operator for a custom object,
+     *        enabling the implementation of specific behaviors for the operator
+     *        based on the object's type.
      *
-     * @param other The operand to perform the operation with.
-     *              The type of the parameter depends on the context
-     *              in which the operator is implemented.
+     *        This operator allows for custom comparison or calculations
+     *        involving the instances of the class.
      *
-     * @return The result of applying the operator, with the return
-     *         type depending on the nature of the operation being
-     *         implemented.
+     * @param num The object or value with which the current object is being compared
+     *              or combined through the overloaded operator.
+     * @return The result of applying the operator, which may vary depending on
+     *         the operator's implementation (e.g., a boolean, a numeric value, or another object).
      */
     friend std::ostream& operator<<(std::ostream& os, const bigint& num) {
         if (num.is_negative) os << '-';
@@ -483,7 +484,6 @@ public:
      *        This operator decreases the numeric value of the bigint object by one
      *        while storing the original value in a temporary bigint object to return it.
      *
-     * @param None
      * @return A bigint object that represents the value of the current bigint
      *         object before the decrement operation.
      */
