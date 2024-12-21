@@ -29,7 +29,6 @@ The `bitint` supports the following features:
    Description: Initializes a `bigint` object from different types, allowing flexibility in usage and seamless
    integration with existing code that uses numeric types.
 
----
 2. **Arithmetic Operators**
    ```cpp
    bitint operator+(const bigint& value) const;
@@ -44,8 +43,6 @@ The `bitint` supports the following features:
    Description: Overloaded operators to perform arithmetic on `bigint` objects. These operators allow direct
    manipulation, similar to built-in numeric types.
 
----
-
 4. **Comparison Operators**
    ```cpp
    bool operator==(const bigint& value) const;
@@ -57,14 +54,13 @@ The `bitint` supports the following features:
    ```
    Description: Overloaded comparison operators to enable relational operations between `bigint` objects.
 
----
 5. **Input/Output Operators**
    ```cpp
    friend std::ostream& operator<<(std::ostream& os, const BigInt& bigint);
    ```
    Description: Stream insertion and extraction overload allow the user to output `bigint` objects directly with
    `cout`.
----
+
 6. **Increment and Decrement Operators**
    ```cpp
    bigint& operator++();       // Pre-increment
