@@ -1,4 +1,4 @@
-#include <assert.h>
+#include <cassert>
 
 #include "bigint.hpp"
 #include <iostream>
@@ -354,77 +354,77 @@ void test_bigint_string_subtraction() {
     bigint b("1234");
     bigint result = a - b;
     assert(result == bigint("11111"));
-    std::cout << "Test 1 Passed: \"12345\" - \"1234\" = " << result << "\n";
+    std::cout << R"(Test 1 Passed: "12345" - "1234" = )" << result << "\n";
 
     // Test 2: Subtraction of two positive numbers (result negative)
     a = bigint("1234");
     b = bigint("12345");
     result = a - b;
     assert(result == bigint("-11111"));
-    std::cout << "Test 2 Passed: \"1234\" - \"12345\" = " << result << "\n";
+    std::cout << R"(Test 2 Passed: "1234" - "12345" = )" << result << "\n";
 
     // Test 3: Subtraction with zero (positive - 0)
     a = bigint("12345");
     b = bigint("0");
     result = a - b;
     assert(result == bigint("12345"));
-    std::cout << "Test 3 Passed: \"12345\" - \"0\" = " << result << "\n";
+    std::cout << R"(Test 3 Passed: "12345" - "0" = )" << result << "\n";
 
     // Test 4: Subtraction with zero (negative - 0)
     a = bigint("-12345");
     b = bigint("0");
     result = a - b;
     assert(result == bigint("-12345"));
-    std::cout << "Test 4 Passed: \"-12345\" - \"0\" = " << result << "\n";
+    std::cout << R"(Test 4 Passed: "-12345" - "0" = )" << result << "\n";
 
     // Test 5: Subtraction of zero from zero
     a = bigint("000000");
     b = bigint("0");
     result = a - b;
     assert(result == bigint("0"));
-    std::cout << "Test 5 Passed: \"0\" - \"0\" = " << result << "\n";
+    std::cout << R"(Test 5 Passed: "0" - "0" = )" << result << "\n";
 
     // Test 6: Subtraction of two negative numbers (result negative)
     a = bigint("-12345");
     b = bigint("-123");
     result = a - b;
     assert(result == bigint("-12222"));
-    std::cout << "Test 6 Passed: \"-12345\" - \"-123\" = " << result << "\n";
+    std::cout << R"(Test 6 Passed: "-12345" - "-123" = )" << result << "\n";
 
     // Test 7: Subtraction of two negative numbers (result positive)
     a = bigint("-123");
     b = bigint("-12345");
     result = a - b;
     assert(result == bigint("12222"));
-    std::cout << "Test 7 Passed: \"-123\" - \"-12345\" = " << result << "\n";
+    std::cout << R"(Test 7 Passed: "-123" - "-12345" = )" << result << "\n";
 
     // Test 8: Subtraction with mixed signs (positive - negative)
     a = bigint("12345");
     b = bigint("-123");
     result = a - b;
     assert(result == bigint("12468"));
-    std::cout << "Test 8 Passed: \"12345\" - \"-123\" = " << result << "\n";
+    std::cout << R"(Test 8 Passed: "12345" - "-123" = )" << result << "\n";
 
     // Test 9: Subtraction with mixed signs (negative - positive)
     a = bigint("-123");
     b = bigint("123");
     result = a - b;
     assert(result == bigint("-246"));
-    std::cout << "Test 9 Passed: \"-123\" - \"123\" = " << result << "\n";
+    std::cout << R"(Test 9 Passed: "-123" - "123" = )" << result << "\n";
 
     // Test 10: Large number subtraction (no carry)
     a = bigint("1000000");
     b = bigint("1");
     result = a - b;
     assert(result == bigint("999999"));
-    std::cout << "Test 10 Passed: \"1000000\" - \"1\" = " << result << "\n";
+    std::cout << R"(Test 10 Passed: "1000000" - "1" = )" << result << "\n";
 
     // Test 11: Large number subtraction with carry
     a = bigint("1000");
     b = bigint("1");
     result = a - b;
     assert(result == bigint("999"));
-    std::cout << "Test 11 Passed: \"1000\" - \"1\" = " << result << "\n";
+    std::cout << R"(Test 11 Passed: "1000" - "1" = )" << result << "\n";
 
     std::cout << "All subtraction tests passed successfully!\n";
 }
@@ -578,7 +578,7 @@ void test_bigint_assignment_operators() {
     b = bigint("54321");
     a += b;
     assert(a == bigint("66666"));
-    std::cout << "Test 2 Passed: bigint(\"12345\") += bigint(\"54321\") = " << a << "\n";
+    std::cout << R"(Test 2 Passed: bigint("12345") += bigint("54321") = )" << a << "\n";
 
     // Test 3: += with default-constructed bigint()
     a = bigint();
@@ -599,7 +599,7 @@ void test_bigint_assignment_operators() {
     b = bigint("1234");
     a -= b;
     assert(a == bigint("8766"));
-    std::cout << "Test 5 Passed: bigint(\"10000\") -= bigint(\"1234\") = " << a << "\n";
+    std::cout << R"(Test 5 Passed: bigint("10000") -= bigint("1234") = )" << a << "\n";
 
     // Test 6: -= with default-constructed bigint()
     a = bigint();
@@ -703,7 +703,7 @@ void test_bigint_multiplication() {
     b = bigint("654321");
     result = a * b;
     assert(result == bigint("80779853376"));
-    std::cout << "Test 9 Passed: bigint(\"123456\") * bigint(\"654321\") = " << result << "\n";
+    std::cout << R"(Test 9 Passed: bigint("123456") * bigint("654321") = )" << result << "\n";
 
     // Test 10: Multiplication involving a default-constructed bigint()
     a = bigint();
@@ -723,63 +723,63 @@ void test_bigint_string_multiplication() {
     bigint b("456");
     bigint result = a * b;
     assert(result == bigint("56088"));
-    std::cout << "Test 1 Passed: bigint(\"123\") * bigint(\"456\") = " << result << "\n";
+    std::cout << R"(Test 1 Passed: bigint("123") * bigint("456") = )" << result << "\n";
 
     // Test 2: Multiplication of a positive and a negative string number
     a = bigint("123");
     b = bigint("-456");
     result = a * b;
     assert(result == bigint("-56088"));
-    std::cout << "Test 2 Passed: bigint(\"123\") * bigint(\"-456\") = " << result << "\n";
+    std::cout << R"(Test 2 Passed: bigint("123") * bigint("-456") = )" << result << "\n";
 
     // Test 3: Multiplication of two negative string numbers
     a = bigint("-123");
     b = bigint("-456");
     result = a * b;
     assert(result == bigint("56088"));
-    std::cout << "Test 3 Passed: bigint(\"-123\") * bigint(\"-456\") = " << result << "\n";
+    std::cout << R"(Test 3 Passed: bigint("-123") * bigint("-456") = )" << result << "\n";
 
     // Test 4: Multiplication involving zero
     a = bigint("12345");
     b = bigint("0");
     result = a * b;
     assert(result == bigint("0"));
-    std::cout << "Test 4 Passed: bigint(\"12345\") * bigint(\"0\") = " << result << "\n";
+    std::cout << R"(Test 4 Passed: bigint("12345") * bigint("0") = )" << result << "\n";
 
     // Test 5: Multiplication of large string numbers
     a = bigint("987654321");
     b = bigint("123456789");
     result = a * b;
     assert(result == bigint("121932631112635269"));
-    std::cout << "Test 5 Passed: bigint(\"987654321\") * bigint(\"123456789\") = " << result << "\n";
+    std::cout << R"(Test 5 Passed: bigint("987654321") * bigint("123456789") = )" << result << "\n";
 
     // Test 6: Compound multiplication assignment *= with positive string numbers
     a = bigint("12");
     b = bigint("34");
     a *= b;
     assert(a == bigint("408"));
-    std::cout << "Test 6 Passed: bigint(\"12\") *= bigint(\"34\") = " << a << "\n";
+    std::cout << R"(Test 6 Passed: bigint("12") *= bigint("34") = )" << a << "\n";
 
     // Test 7: Compound multiplication assignment *= with a negative string number
     a = bigint("12");
     b = bigint("-34");
     a *= b;
     assert(a == bigint("-408"));
-    std::cout << "Test 7 Passed: bigint(\"12\") *= bigint(\"-34\") = " << a << "\n";
+    std::cout << R"(Test 7 Passed: bigint("12") *= bigint("-34") = )" << a << "\n";
 
     // Test 8: Compound multiplication assignment *= with zero
     a = bigint("12345");
     b = bigint("0");
     a *= b;
     assert(a == bigint("0"));
-    std::cout << "Test 8 Passed: bigint(\"12345\") *= bigint(\"0\") = " << a << "\n";
+    std::cout << R"(Test 8 Passed: bigint("12345") *= bigint("0") = )" << a << "\n";
 
     // Test 9: Multiplication of numbers with leading zeros
     a = bigint("00123");
     b = bigint("0456");
     result = a * b;
     assert(result == bigint("56088"));
-    std::cout << "Test 9 Passed: bigint(\"00123\") * bigint(\"0456\") = " << result << "\n";
+    std::cout << R"(Test 9 Passed: bigint("00123") * bigint("0456") = )" << result << "\n";
 
     // Test 10: Multiplication involving default-constructed bigint()
     a = bigint();

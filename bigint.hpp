@@ -128,7 +128,7 @@ private:
         bigint result;
         result.is_negative = is_negative;
         int64_t carry = 0, sum = 0;
-        size_t max_size = std::max(digits.size(), value.digits.size());
+        const size_t max_size = std::max(digits.size(), value.digits.size());
         result.digits.resize(max_size);
 
         for (size_t i = 0; i < max_size; ++i) {
@@ -143,16 +143,18 @@ private:
     }
 
     /**
-     * @brief Subtracts the absolute values of two bigint objects.
-     *        The result retains the appropriate sign based on the relative size
-     *        of the operands and their signs.
+     * @brief Subtracts the absolute values of the current bigint object
+     *        and another bigint object, ignoring their signs, and
+     *        returns the result as a new bigint.
      *
-     * @param value The bigint object whose absolute value is to be subtracted
+     *        This method computes the difference between the magnitudes
+     *        of the numbers and assigns the appropriate sign to the result
+     *        based on their relative magnitudes and original signs.
+     *
+     * @param value The bigint object whose absolute value will be subtracted
      *              from the absolute value of the current bigint object.
-     *
-     * @return A bigint object representing the result of the absolute value subtraction.
-     *         The sign of the result is determined by the relative size and sign of
-     *         the operands.
+     * @return A bigint object representing the result of the subtraction
+     *         of the absolute values, with the correct sign.
      */
     [[nodiscard]] bigint subtract_absolute_values(const bigint& value) const {
         bigint result;
