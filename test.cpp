@@ -83,147 +83,147 @@ void test_bigint_addition() {
     bigint b(456);
     bigint result = a + b;
     assert(result == bigint(579));
-    cout << "Test 1 Passed: 123 + 456 = " << result << "\n";
+    std::cout << "Test 1 Passed: 123 + 456 = " << result << "\n";
 
     // Test 2: Addition of two negative numbers
     a = bigint(-123);
     b = bigint(-456);
     result = a + b;
     assert(result == bigint(-579));
-    cout << "Test 2 Passed: -123 + -456 = " << result << "\n";
+    std::cout << "Test 2 Passed: -123 + -456 = " << result << "\n";
 
     // Test 3: Positive + Negative (Result Positive)
     a = bigint(100);
     b = bigint(-25);
     result = a + b;
     assert(result == bigint(75));
-    cout << "Test 3 Passed: 100 + (-25) = " << result << "\n";
+    std::cout << "Test 3 Passed: 100 + (-25) = " << result << "\n";
 
     // Test 4: Positive + Negative (Result Negative)
     a = bigint(25);
     b = bigint(-100);
     result = a + b;
     assert(result == bigint(-75));
-    cout << "Test 4 Passed: 25 + (-100) = " << result << "\n";
+    std::cout << "Test 4 Passed: 25 + (-100) = " << result << "\n";
 
     // Test 5: Negative + Positive (Result Positive)
     a = bigint(-25);
     b = bigint(100);
     result = a + b;
     assert(result == bigint(75));
-    cout << "Test 5 Passed: -25 + 100 = " << result << "\n";
+    std::cout << "Test 5 Passed: -25 + 100 = " << result << "\n";
 
     // Test 6: Negative + Positive (Result Negative)
     a = bigint(-100);
     b = bigint(25);
     result = a + b;
     assert(result == bigint(-75));
-    cout << "Test 6 Passed: -100 + 25 = " << result << "\n";
+    std::cout << "Test 6 Passed: -100 + 25 = " << result << "\n";
 
     // Test 7: Addition with zero
     a = bigint(123);
     b = bigint(0);
     result = a + b;
     assert(result == bigint(123));
-    cout << "Test 7 Passed: 123 + 0 = " << result << "\n";
+    std::cout << "Test 7 Passed: 123 + 0 = " << result << "\n";
 
     // Test 8: Addition with zero
     a = bigint(0);
     b = bigint(-123);
     result = a + b;
     assert(result == bigint(-123));
-    cout << "Test 8 Passed: 0 + (-123) = " << result << "\n";
+    std::cout << "Test 8 Passed: 0 + (-123) = " << result << "\n";
 
     // Test 9: Both numbers are zero
     a = bigint(0);
     b = bigint(0);
     result = a + b;
     assert(result == bigint(0));
-    cout << "Test 9 Passed: 0 + 0 = " << result << "\n";
+    std::cout << "Test 9 Passed: 0 + 0 = " << result << "\n";
 
     // Test 10: Addition causing carry propagation
     a = bigint(999);
     b = bigint(1);
     result = a + b;
     assert(result == bigint(1000));
-    cout << "Test 10 Passed: 999 + 1 = " << result << "\n";
+    std::cout << "Test 10 Passed: 999 + 1 = " << result << "\n";
 
     // Test 11: Handle -0
     a = bigint(0);
     b = bigint(-0);
     result = a + b;
     assert(result == bigint(0));
-    cout << "Test 11 Passed: 0 + -0 = " << result << "\n";
+    std::cout << "Test 11 Passed: 0 + -0 = " << result << "\n";
 
-    cout << "All addition tests passed successfully!\n";
+    std::cout << "All addition tests passed successfully!\n";
 }
 
 void test_bigint_string_and_addition() {
-    cout << "Running tests for bigint(string) constructor and addition...\n";
+    std::cout << "Running tests for bigint(string) constructor and addition...\n";
 
     // Test 1: Valid positive number
     bigint a("12345");
     bigint b("67890");
     bigint result = a + b;
     assert(result == bigint("80235"));
-    cout << R"(Test 1 Passed: "12345" + "67890" = )" << result << "\n";
+    std::cout << R"(Test 1 Passed: "12345" + "67890" = )" << result << "\n";
 
     // Test 2: Valid negative number
     a = bigint("-12345");
     b = bigint("-67890");
     result = a + b;
     assert(result == bigint("-80235"));
-    cout << R"(Test 2 Passed: "-12345" + "-67890" = )" << result << "\n";
+    std::cout << R"(Test 2 Passed: "-12345" + "-67890" = )" << result << "\n";
 
     // Test 3: Positive + Negative (Result Positive)
     a = bigint("1000");
     b = bigint("-999");
     result = a + b;
     assert(result == bigint("1"));
-    cout << R"(Test 3 Passed: "1000" + "-999" = )" << result << "\n";
+    std::cout << R"(Test 3 Passed: "1000" + "-999" = )" << result << "\n";
 
     // Test 4: Positive + Negative (Result Negative)
     a = bigint("1000");
     b = bigint("-2000");
     result = a + b;
     assert(result == bigint("-1000"));
-    cout << R"(Test 4 Passed: "1000" + "-2000" = )" << result << "\n";
+    std::cout << R"(Test 4 Passed: "1000" + "-2000" = )" << result << "\n";
 
     // Test 5: String with leading zeros
     a = bigint("00012345");
     b = bigint("000067890");
     result = a + b;
     assert(result == bigint("80235"));
-    cout << R"(Test 5 Passed: "00012345" + "000067890" = )" << result << "\n";
+    std::cout << R"(Test 5 Passed: "00012345" + "000067890" = )" << result << "\n";
 
     // Test 6: One number is zero
     a = bigint("0");
     b = bigint("-12345");
     result = a + b;
     assert(result == bigint("-12345"));
-    cout << R"(Test 6 Passed: "0" + "-12345" = )" << result << "\n";
+    std::cout << R"(Test 6 Passed: "0" + "-12345" = )" << result << "\n";
 
     // Test 7: Both numbers are zero
     a = bigint("0");
     b = bigint("0");
     result = a + b;
     assert(result == bigint("0"));
-    cout << R"(Test 7 Passed: "0" + "0" = )" << result << "\n";
+    std::cout << R"(Test 7 Passed: "0" + "0" = )" << result << "\n";
 
     // Test 8: Empty string (invalid input)
     try {
         a = bigint("");
-        cout << "Test 8 Failed: Empty string did not throw an exception\n";
-    } catch (const invalid_argument& e) {
-        cout << "Test 8 Passed: Empty string threw exception: " << e.what() << "\n";
+        std::cout << "Test 8 Failed: Empty string did not throw an exception\n";
+    } catch (const std::invalid_argument& e) {
+        std::cout << "Test 8 Passed: Empty string threw exception: " << e.what() << "\n";
     }
 
     // Test 9: String with invalid characters
     try {
         a = bigint("123a45");
-        cout << "Test 9 Failed: Invalid string did not throw an exception\n";
+        std::cout << "Test 9 Failed: Invalid string did not throw an exception\n";
     } catch (const std::invalid_argument& e) {
-        cout << "Test 9 Passed: Invalid string threw exception: " << e.what() << "\n";
+        std::cout << "Test 9 Passed: Invalid string threw exception: " << e.what() << "\n";
     }
 
     // Test 10: Both numbers has same size with different sign
@@ -231,23 +231,23 @@ void test_bigint_string_and_addition() {
     b = bigint("100");
     result = a + b;
     assert(result == bigint("0"));
-    cout << R"(Test 10 Passed: "-100" + "100" = )" << result << "\n";
+    std::cout << R"(Test 10 Passed: "-100" + "100" = )" << result << "\n";
 
     // Test 11: Both numbers has same size with different sign
     a = bigint("100");
     b = bigint("-100");
     result = a + b;
     assert(result == bigint("0"));
-    cout << R"(Test 11 Passed: "100" + "-100" = )" << result << "\n";
+    std::cout << R"(Test 11 Passed: "100" + "-100" = )" << result << "\n";
 
     // Test 12: Both numbers has same size with different sign and leading zero
     a = bigint("100");
     b = bigint("-00100");
     result = a + b;
     assert(result == bigint("0"));
-    cout << R"(Test 12 Passed: "100" + "-00100" = )" << result << "\n";
+    std::cout << R"(Test 12 Passed: "100" + "-00100" = )" << result << "\n";
 
-    cout << "All tests for bigint(string) constructor and addition passed successfully!\n";
+    std::cout << "All tests for bigint(string) constructor and addition passed successfully!\n";
 }
 
 void test_bigint_subtraction() {

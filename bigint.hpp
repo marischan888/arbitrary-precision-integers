@@ -8,8 +8,6 @@
 #include <string>
 #include <vector>
 
-using namespace std;
-
 /**
  * @brief Compares the absolute values of the current bigint object
  *        with another bigint object to determine which is larger.
@@ -23,15 +21,7 @@ using namespace std;
  */
 class bigint {
 public:
-    /**
-     * @brief Default constructor for the bigint class.
-     *        Initializes a bigint object with default values.
-     *
-     * @return An instance of bigint with default digits set to 0
-     *         and is_negative set to false.
-     */
-    bigint() : digits(0), is_negative(false) {}
-
+    bigint() : is_negative(false) {digits.push_back(0);}
 
     /**
      * @brief Constructs a bigint object from a given int64_t number.
@@ -65,8 +55,8 @@ public:
      * @throw std::invalid_argument Throws an exception if the input string is empty
      *                               or contains invalid (non-digit) characters.
      */
-    explicit bigint(const string& str) : is_negative(false) {
-        if (str.empty()) throw invalid_argument("bigint string is empty");
+    explicit bigint(const std::string& str) : is_negative(false) {
+        if (str.empty()) throw std::invalid_argument("bigint string is empty");
 
         size_t lead = 0;
         if (str[0] == '-') {
@@ -74,10 +64,10 @@ public:
             lead = 1;
         }
         for (size_t i = lead; i < str.size(); ++i) {
-            if (!isdigit(str[i])) throw invalid_argument("bigint string contains non-digit characters");
+            if (!isdigit(str[i])) throw std::invalid_argument("bigint string contains non-digit characters");
             digits.push_back(str[i] - '0');
         }
-        ranges::reverse(digits);
+        std::ranges::reverse(digits);
         remove_leading_zeros();
     }
 
@@ -90,7 +80,7 @@ private:
      *        stored in a specific order (e.g., the least significant digit
      *        first), depending on the implementation.
      */
-    vector<int64_t> digits;
+    std::vector<int64_t> digits;
 
     /**
      * @brief Boolean flag indicating whether the number is negative.
@@ -126,6 +116,7 @@ private:
      */
     [[nodiscard]] bigint add_absolute_values(const bigint& value) const {
         bigint result;
+        result.digits.pop_back();
         result.is_negative = is_negative;
         int64_t carry = 0, sum = 0;
         const size_t max_size = std::max(digits.size(), value.digits.size());
@@ -158,10 +149,11 @@ private:
      */
     [[nodiscard]] bigint subtract_absolute_values(const bigint& value) const {
         bigint result;
+        result.digits.pop_back();
         const bool is_value_larger = abs_values_larger(value);
         result.is_negative = (value.is_negative and is_value_larger) or (*this < value and not is_value_larger);
-        const vector<int64_t>& abs_larger = (is_value_larger ? value.digits : digits);
-        const vector<int64_t>& abs_smaller = (is_value_larger ? digits : value.digits);
+        const std::vector<int64_t>& abs_larger = (is_value_larger ? value.digits : digits);
+        const std::vector<int64_t>& abs_smaller = (is_value_larger ? digits : value.digits);
         int borrow = 0;
 
         for (size_t i = 0; i < abs_larger.size(); ++i) {
@@ -193,10 +185,11 @@ private:
      */
     [[nodiscard]] bigint multiply_absolute_values(const bigint& value) const {
         bigint result;
+        result.digits.pop_back();
         result.digits.resize(digits.size() + value.digits.size(), 0);
 
         for (size_t i = 0; i < digits.size(); ++i) {
-            int carry = 0;
+            int64_t carry = 0;
             for (size_t j = 0; j < value.digits.size() || carry; ++j) {
                 const int64_t current = result.digits[i + j] + digits[i] * (j < value.digits.size() ? value.digits[j] : 0) + carry;
                 result.digits[i + j] = current % 10;
@@ -325,7 +318,7 @@ public:
      *         type depending on the nature of the operation being
      *         implemented.
      */
-    friend ostream& operator<<(std::ostream& os, const bigint& num) {
+    friend std::ostream& operator<<(std::ostream& os, const bigint& num) {
         if (num.is_negative) os << '-';
         for (int64_t digit : std::ranges::reverse_view(num.digits)) {
             os << digit;
@@ -359,6 +352,7 @@ public:
      */
     bigint operator-(const bigint& value) const {
         bigint result;
+        result.digits.pop_back();
         if (is_negative != value.is_negative) {
             result = add_absolute_values(value);
             result.is_negative = is_negative;
@@ -392,13 +386,14 @@ public:
      *         Maintains proper sign handling based on the input values.
      */
     bigint operator+(const bigint& value) const {
-        bigint sum_result;
+        bigint result;
+        result.digits.pop_back();
         if (is_negative == value.is_negative) {
-            sum_result = add_absolute_values(value);
+            result = add_absolute_values(value);
         } else {
-            sum_result = subtract_absolute_values(value);
+            result = subtract_absolute_values(value);
         }
-        return sum_result;
+        return result;
     }
 
     /**
